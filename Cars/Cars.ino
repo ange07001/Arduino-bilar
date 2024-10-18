@@ -67,14 +67,14 @@ void setup() {
   pinMode(enable, OUTPUT);
   Serial.begin(115200);
   servo.attach(servoPin);
- turnStraight();
+  turnS();
   
 
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  
+  fwd(100);
   
 }
 
