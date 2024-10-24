@@ -5,6 +5,7 @@ int inputFwd = 4;
 int enable = 5;
 int servoPin = 10;
 int maxTurn = 90;
+int pushPin = 11;
 
 Servo servo;
 
@@ -58,6 +59,15 @@ void delaySec(int sec) {
   delay(sec*1000);
 }
 
+bool push() {
+  if (digitalRead(pushPin)){
+    return false;
+  }
+  else{
+    return true;
+  }
+}
+
 
 
 void setup() {
@@ -65,6 +75,7 @@ void setup() {
   pinMode(inputFwd, OUTPUT);
   pinMode(inputRev, OUTPUT);
   pinMode(enable, OUTPUT);
+  pinMode(pushPin, INPUT_PULLUP);
   Serial.begin(115200);
   servo.attach(servoPin);
   turnS();
@@ -74,7 +85,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  fwd(100);
+
   
 }
 
