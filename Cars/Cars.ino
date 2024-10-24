@@ -1,5 +1,6 @@
 #include <Servo.h>
 
+// Define pin numbers for motor and servo control
 int inputRev = 3;
 int inputFwd = 4;
 int enable = 5;
@@ -9,45 +10,54 @@ int pushPin = 11;
 
 Servo servo;
 
+// Move the car forward at a specified speed
 void fwd(int speed) {
   speed = constrain(speed, 0, 100);
-  speed = map(speed,0,100,0,255);
-
+  speed = map(speed, 0, 100, 0, 255);
   Serial.print("Fwd speed: ");
   Serial.println(speed);
   analogWrite(enable, speed);
-  digitalWrite(inputFwd,HIGH);
-  digitalWrite(inputRev, 0);
+  digitalWrite(inputFwd, HIGH);
+  digitalWrite(inputRev, LOW);
 }
 
+// Move the car backward at a specified speed
 void rev(int speed) {
   speed = constrain(speed, 0, 100);
-  speed = map(speed,0,100,0,255);
-
+  speed = map(speed, 0, 100, 0, 255);
   analogWrite(enable, speed);
   Serial.print("Rev speed: ");
   Serial.println(speed);
   digitalWrite(inputRev, HIGH);
-  digitalWrite(inputFwd, 0);
+  digitalWrite(inputFwd, LOW);
 }
 
+// Turn the car left by a specified degree
 void turnL(int deg) {
   deg = constrain(deg, 0, 90);
   deg = 90 - deg;
   deg = map(deg, 0, 90, 0, maxTurn);
   servo.write(deg);
+  Serial.print("Turn angle: ");
+  Serial.println(deg);
 }
 
+// Turn the car right by a specified degree
 void turnR(int deg) {
   deg = constrain(deg, 0, 90);
   deg = 90 + deg;
-  deg = map(deg, 90, 180, 90, maxTurn+90);
+  deg = map(deg, 90, 180, 90, maxTurn + 90);
   servo.write(deg);
+  Serial.print("Turn angle: ");
+  Serial.println(deg);
 }
 
-void turnS(){
+// Center the steering
+void turnS() {
   servo.write(90);
 }
+
+// Stop the car
 void stop() {
   analogWrite(enable, 0);
   digitalWrite(inputFwd, LOW);
@@ -55,34 +65,34 @@ void stop() {
   Serial.println("Speed: 0");
 }
 
+// Delay execution for a specified number of seconds
 void delaySec(int sec) {
-  delay(sec*1000);
+  delay(sec * 1000);
 }
 
+// Check if the push button is pressed
 bool push() {
-  if (digitalRead(pushPin)){
-    return false;
-  }
-  else{
-    return true;
-  }
+  return !digitalRead(pushPin);
 }
 
-void fwdUntilPush(int speed){
-  while (push() == false) {
+// Move forward until the push button is pressed
+void fwdUntilPush(int speed) {
+  while (!push()) {
     fwd(speed);
   }
   stop();
 }
 
-void stopIfPush(){
-  if (push()){
+// Stop the car if the push button is pressed
+void stopIfPush() {
+  if (push()) {
     stop();
   }
 }
 
-void revIfPush(int speed){
-  if (push()){
+// Move backward if the push button is pressed
+void revIfPush(int speed) {
+  if (push()) {
     stop();
     delay(100);
     rev(speed);
@@ -90,11 +100,8 @@ void revIfPush(int speed){
   }
 }
 
-
-
-
 void setup() {
-  // put your setup code here, to run once:
+  // Initialize pins and serial communication
   pinMode(inputFwd, OUTPUT);
   pinMode(inputRev, OUTPUT);
   pinMode(enable, OUTPUT);
@@ -102,12 +109,8 @@ void setup() {
   Serial.begin(115200);
   servo.attach(servoPin);
   turnS();
-  
-
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  // Main loop (currently empty)
 }
-
-
