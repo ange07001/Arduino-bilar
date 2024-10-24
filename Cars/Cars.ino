@@ -68,6 +68,29 @@ bool push() {
   }
 }
 
+void fwdUntilPush(int speed){
+  while (push() == false) {
+    fwd(speed);
+  }
+  stop();
+}
+
+void stopIfPush(){
+  if (push()){
+    stop();
+  }
+}
+
+void revIfPush(int speed){
+  if (push()){
+    stop();
+    delay(100);
+    rev(speed);
+    delay(1000);
+  }
+}
+
+
 
 
 void setup() {
@@ -85,8 +108,6 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-
-  
 }
 
 
