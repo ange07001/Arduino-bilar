@@ -33,7 +33,7 @@ void rev(int speed) {
 }
 
 // Turn the car left by a specified degree
-void turnL(int deg) {
+void turnR(int deg) {
   deg = constrain(deg, 0, 90);
   deg = map(deg, 0, 90, 0, maxTurn);
   deg = 90 - deg;
@@ -43,7 +43,7 @@ void turnL(int deg) {
 }
 
 // Turn the car right by a specified degree
-void turnR(int deg) {
+void turnL(int deg) {
   deg = constrain(deg, 0, 90);
   deg = 90 + deg;
   deg = map(deg, 90, 180, 90, maxTurn + 90);
@@ -114,4 +114,5 @@ void setup() {
 
 void loop() {
   // Main loop (currently empty)
+  
 }
