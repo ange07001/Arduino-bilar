@@ -5,7 +5,7 @@ int inputRev = 3;
 int inputFwd = 4;
 int enable = 5;
 int servoPin = 10;
-int maxTurn = 90;
+int maxTurn = 33;
 int pushPin = 11;
 
 Servo servo;
@@ -35,8 +35,8 @@ void rev(int speed) {
 // Turn the car left by a specified degree
 void turnL(int deg) {
   deg = constrain(deg, 0, 90);
-  deg = 90 - deg;
   deg = map(deg, 0, 90, 0, maxTurn);
+  deg = 90 - deg;
   servo.write(deg);
   Serial.print("Turn angle: ");
   Serial.println(deg);
@@ -55,6 +55,7 @@ void turnR(int deg) {
 // Center the steering
 void turnS() {
   servo.write(90);
+  Serial.println("90");
 }
 
 // Stop the car
