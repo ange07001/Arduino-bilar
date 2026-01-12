@@ -1,12 +1,12 @@
 #include <Servo.h>
 
 // Define pin numbers for motor and servo control
-int inputRev = 3;
-int inputFwd = 4;
-int enable = 5;
-int servoPin = 10;
+int inputRev = 10;
+int inputFwd = 12;
+int enable = 9;
+int servoPin = 11;
 int maxTurn = 33;
-int pushPin = 11;
+int pushPin = 8;
 
 Servo servo;
 
