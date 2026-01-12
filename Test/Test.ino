@@ -117,5 +117,18 @@ void setup() {
 
 void loop() {
   // Main loop (currently empty)
-  
+  fwd(100);
+  delaySec(2);
+  rev(100);
+  delaySec(2);
+  stop();
+  delaySec(1);
+  turnR(90);
+  delaySec(2);
+  turnL(90);
+  delaySec(2);
+  turnS();
+  delaySec(1);
+  fwdUntilPush(75);
+  delaySec(1);
 }
