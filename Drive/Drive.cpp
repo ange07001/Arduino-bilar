@@ -11,7 +11,7 @@ const int MAX_TURN   = 33;
 // Setup and initialization
 Servo servo;
 
-void carBegin() {
+void carInit() {
   pinMode(INPUT_FWD, OUTPUT);
   pinMode(INPUT_REV, OUTPUT);
   pinMode(ENABLE_PIN, OUTPUT);
@@ -62,6 +62,7 @@ void turnR(int deg) {
 
   servo.write(deg);
 
+  Serial.println("Turning Right");
   Serial.print("Turn angle: ");
   Serial.println(deg);
 }
@@ -73,12 +74,16 @@ void turnL(int deg) {
 
   servo.write(deg);
 
+  Serial.println("Turning Left");
   Serial.print("Turn angle: ");
   Serial.println(deg);
 }
 
 void turnS() {
   servo.write(90);
+
+  Serial.println("Wheels straight");
+  Serial.print("Turn angle: ");
   Serial.println("90");
 }
 

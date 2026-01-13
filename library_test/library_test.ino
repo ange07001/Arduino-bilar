@@ -8,5 +8,8 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  fwd(50);
+  fwd(100);
+  delaySec(10);
+  rev(100);
+  delaySec(10);
 }
