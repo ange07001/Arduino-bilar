@@ -31,7 +31,7 @@ The Drive library uses the following pin configuration for the Arduino Uno R3:
 - **INPUT_FWD** (Pin 12): Forward motor control
 - **INPUT_REV** (Pin 10): Reverse motor control
 - **ENABLE_PIN** (Pin 3): Motor speed control (PWM)
-- **SERVO_PIN** (Pin 11): Servo motor for steering
+- **SERVO_PIN** (Pin 11): Servo steering (PWM)
 - **PUSH_PIN** (Pin 8): Push button for obstacle detection
 
 ## Getting Started
@@ -168,17 +168,8 @@ void loop() {
 
 - **Drive/**: Arduino library folder containing the Drive.h and Drive.cpp files
 - **Cars/**: Example sketch for basic car control
-- **Test/**: Test sketch demonstrating library features
+- **Test/**: Test sketch demonstrating library features and for testing car functionality
 - **circuit.svg**: Circuit diagram for hardware setup
-
-## Learning Resources
-
-This project is designed for educational purposes. To get the most out of it:
-
-1. Start with the simple examples in the Cars and Test folders
-2. Experiment with different speed values and turn angles
-3. Combine functions to create interesting movement patterns
-4. Use the Serial Monitor (115200 baud) to see debug output from the car
 
 ## Troubleshooting
 
@@ -186,7 +177,3 @@ This project is designed for educational purposes. To get the most out of it:
 - **Serial Monitor shows nothing**: Check that the baud rate is set to 115200
 - **Library not found**: Verify the Drive folder is in the correct location (`Documents/Arduino/libraries/Drive/`)
 - **Steering not responsive enough**: The steering angles are calibrated for specific servo motors. You may need to experiment with different angle values (0-90) in your code to find what works best for your hardware
-
-## License
-
-This project is intended for educational use.
