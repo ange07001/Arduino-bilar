@@ -3,10 +3,10 @@
 // Pin definitions
 const int INPUT_REV  = 10;
 const int INPUT_FWD  = 12;
-const int ENABLE_PIN = 9;
+const int ENABLE_PIN = 3;
 const int SERVO_PIN  = 11;
 const int PUSH_PIN   = 8;
-const int MAX_TURN   = 33;
+const int MAX_TURN   = 66;
 
 // Setup and initialization
 Servo servo;
