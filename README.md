@@ -17,7 +17,7 @@ To use this library with your Arduino projects, you need to install the Drive li
 
 The final path should look similar to:
 ```
-User/Documents/Arduino/libraries/Drive/
+Documents/Arduino/libraries/Drive/
 ```
 
 4. Restart the Arduino IDE if it was open.
@@ -143,14 +143,24 @@ void setup() {
 }
 
 void loop() {
-  fwdUntilPush(75);    // Move forward at 75% speed until obstacle detected
-  delaySec(5);         // Wait 5 seconds
-  turnL(90);           // Turn left 90 degrees
-  delaySec(3);         // Wait 3 seconds
-  turnR(90);           // Turn right 90 degrees
-  delaySec(3);         // Wait 3 seconds
-  turnS();             // Center steering
-  delaySec(2);         // Wait 2 seconds
+  // Move forward until obstacle detected
+  fwdUntilPush(75);
+  delaySec(2);
+  
+  // Turn left and move forward
+  turnL(45);
+  fwd(70);
+  delaySec(2);
+  
+  // Turn right and move forward
+  turnR(45);
+  fwd(70);
+  delaySec(2);
+  
+  // Straighten wheels and stop
+  turnS();
+  stopCar();
+  delaySec(3);
 }
 ```
 
@@ -175,7 +185,7 @@ This project is designed for educational purposes. To get the most out of it:
 - **Car doesn't move**: Make sure you called `carInit()` in the `setup()` function
 - **Serial Monitor shows nothing**: Check that the baud rate is set to 115200
 - **Library not found**: Verify the Drive folder is in the correct location (`Documents/Arduino/libraries/Drive/`)
-- **Unexpected behavior**: Try adjusting the `MAX_TURN` constant in Drive.cpp if steering angles need calibration
+- **Steering not responsive enough**: The steering angles are calibrated for specific servo motors. You may need to experiment with different angle values (0-90) in your code to find what works best for your hardware
 
 ## License
 
