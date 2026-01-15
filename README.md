@@ -82,13 +82,13 @@ Stops the car immediately by setting motor speed to 0.
 Turns the steering servo to the left by a specified angle.
 - **Parameters**: 
   - `deg`: Turn angle from 0 to 90 degrees (0 = straight, 90 = maximum left turn)
-- **Example**: `turnL(45);` // Turn left 45 degrees
+- **Example**: `turnL(45);` // Turn left 45 units (not actually degrees)
 
 #### `turnR(int deg)`
 Turns the steering servo to the right by a specified angle.
 - **Parameters**: 
   - `deg`: Turn angle from 0 to 90 degrees (0 = straight, 90 = maximum right turn)
-- **Example**: `turnR(30);` // Turn right 30 degrees
+- **Example**: `turnR(30);` // Turn right 30 units (not actually degrees) 
 
 #### `turnS()`
 Centers the steering to go straight.
